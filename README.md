@@ -42,26 +42,25 @@ Based on [Ethos Network's credibility score system](https://whitepaper.ethos.net
 ## Project Structure
 
 ```
-├── src/
-│   ├── components/
-│   │   ├── chat/          # ChatArea, MessageBubble
-│   │   ├── layout/        # Header, Sidebar
-│   │   ├── pages/         # ChatPage, LoginPage
-│   │   └── ui/            # Button, Card, Input, Badge
-│   ├── constants/         # Chat rooms configuration
-│   ├── lib/               # Utility functions
-│   ├── services/
-│   │   ├── api.ts         # REST API client
-│   │   ├── ethosApi.ts    # Ethos Network API
-│   │   └── socket.ts      # WebSocket client
-│   ├── store/
-│   │   └── slices/        # Redux slices (auth, chat, ui)
-│   └── types/             # TypeScript definitions
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── chat/        # ChatArea, MessageBubble
+│   │   │   ├── layout/      # Header, Sidebar
+│   │   │   ├── pages/       # ChatPage, LoginPage
+│   │   │   └── ui/          # Button, Card, Input, Badge
+│   │   ├── constants/       # Chat rooms configuration
+│   │   ├── lib/             # Utility functions
+│   │   ├── services/        # API, WebSocket, Ethos clients
+│   │   ├── store/           # Redux store and slices
+│   │   └── types/           # TypeScript definitions
+│   ├── package.json
+│   └── vite.config.ts
 ├── backend/
-│   ├── main.py            # FastAPI application
-│   ├── requirements.txt   # Python dependencies
-│   └── Dockerfile         # Container configuration
-└── supabase-schema.sql    # Database schema
+│   ├── main.py              # FastAPI application
+│   ├── requirements.txt     # Python dependencies
+│   └── Dockerfile           # Container configuration
+└── supabase-schema.sql      # Database schema
 ```
 
 ## Getting Started
@@ -75,6 +74,7 @@ Based on [Ethos Network's credibility score system](https://whitepaper.ethos.net
 ### Frontend Setup
 
 ```bash
+cd frontend
 npm install
 npm run dev
 ```
@@ -89,12 +89,12 @@ python main.py
 
 ### Environment Variables
 
-**Frontend** (`.env`):
+**Frontend** (`frontend/.env`):
 ```env
 VITE_API_URL=http://localhost:8080
 ```
 
-**Backend** (`.env`):
+**Backend** (`backend/.env`):
 ```env
 SUPABASE_URL=your_supabase_url
 SUPABASE_ANON_KEY=your_supabase_anon_key
@@ -110,6 +110,7 @@ Run the SQL in `supabase-schema.sql` in your Supabase SQL Editor to create the m
 ### Frontend (Vercel)
 
 ```bash
+cd frontend
 vercel deploy --prod
 ```
 
@@ -133,4 +134,3 @@ docker run -p 8080:8080 --env-file .env ethoschat-api
 ## License
 
 MIT
-     
